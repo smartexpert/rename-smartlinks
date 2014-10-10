@@ -14,5 +14,5 @@ $URL = "http://www.ultradox.com".htmlspecialchars($_GET["id"]);
 //Call the ultradox url for processing
 file_get_contents($URL);
 //Redirect user to target url
-header("Location: http://www.google.ca/");
+header("Location: http://ebogholderen.dk");
 ?>
