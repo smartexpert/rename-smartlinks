@@ -13,7 +13,7 @@ $json = file_get_contents('php://input');
 //Decode JSON data
 $obj = json_decode($json,true);
 //Build a new array with a "url" parameter the value of whcih is a renamed link
-$data = array("url"=>str_replace("www.ultradox.com","images.open-org.com/smartlink.php?id=",$obj['linkToTarget']));
+$data = array("url"=>str_replace("www.ultradox.com","images.open-org.com/rename-smartlinks/smartlink.php?id=",$obj['linkToTarget']));
 //Send encoded JSON back to caller
 echo json_encode($data);
 ?>
