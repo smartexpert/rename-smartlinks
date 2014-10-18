@@ -9,10 +9,15 @@ The script calls ultradox with this "id" (which was the original link before ren
 */
 
 <?php
+//Read JSON input string
+$json = file_get_contents('php://input');
+//Decode JSON data
+$obj = json_decode($json,true);
+
 //Rebuild original ultradox url using the 'id' parameter in the query string
 $URL = "http://www.ultradox.com".htmlspecialchars($_GET["id"]);
 //Call the ultradox url for processing
 file_get_contents($URL);
 //Redirect user to target url
-header("Location: http://ebogholderen.dk");
+header("Location: ".$obj['targetURL']);
 ?>
