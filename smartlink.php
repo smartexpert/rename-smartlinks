@@ -1,3 +1,4 @@
+<?php
 /* 
 Copyright Time at Task Aps 2013. All rights reserved. David Andersen owns all the code you create for this project.
 
@@ -7,17 +8,15 @@ This is done by substituting building a URL to call by appending the "id" query 
 The script expects a query string parameter called "id" 
 The script calls ultradox with this "id" (which was the original link before renaming) and redirects the user to a target url.
 */
-
-<?php
 //Read JSON input string
 $json = file_get_contents('php://input');
 //Decode JSON data
 $obj = json_decode($json,true);
-
 //Rebuild original ultradox url using the 'id' parameter in the query string
 $URL = "http://www.ultradox.com".htmlspecialchars($_GET["id"]);
+$targetURL = htmlspecialchars($_GET["targetURL"]);
 //Call the ultradox url for processing
 file_get_contents($URL);
 //Redirect user to target url
-header("Location: ".$obj['targetURL']);
+header("Location: ".$targetURL);
 ?>

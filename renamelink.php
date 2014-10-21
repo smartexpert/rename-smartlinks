@@ -1,3 +1,5 @@
+<?php
+
 /* 
 Copyright Time at Task Aps 2013. All rights reserved. David Andersen owns all the code you create for this project.
 
@@ -7,13 +9,12 @@ The script expects to recieve a JSON object from Ultradox with a "deleteMatchLin
 The script outputs a JSON object with a key "url" the value of which is the renamed link
 */
 
-<?php
 //Read JSON input string
 $json = file_get_contents('php://input');
 //Decode JSON data
 $obj = json_decode($json,true);
 //Build a new array with a "url" parameter the value of whcih is a renamed link
-$data = array("url"=>str_replace("www.ultradox.com","images.open-org.com/rename-smartlinks/smartlink.php?id=",$obj['deleteMatchLink']));
+$data = array("url"=>str_replace("www.ultradox.com","images.open-org.com/rename-smartlinks/smartlink.php?id=",$obj['deleteMatchLink']).'&targetURL='.$obj['targetURL']);
 //Send encoded JSON back to caller
 echo json_encode($data);
 ?>
